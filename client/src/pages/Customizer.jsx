@@ -53,7 +53,7 @@ const Customizer = () => {
     try {
       setGeneratingImg(true);
 
-      const response = await fetch('https://project-camisetas.onrender.com/api/v1/dalle', {
+      const response = await fetch(config[import.meta.env.MODE].backendUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
