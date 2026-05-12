@@ -65,9 +65,13 @@ const Customizer = () => {
 
       const data = await response.json();
 
+      if (!response.ok || !data.photo) {
+        throw new Error(data.message || "Image generation failed");
+      }
+
       handleDecals(type, `data:image/png;base64,${data.photo}`)
     } catch (error) {
-      alert(error)
+      alert(error.message)
     } finally {
       setGeneratingImg(false);
       setActiveEditorTab("");
